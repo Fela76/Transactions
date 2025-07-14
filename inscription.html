@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./fonts/css/all.css">
+   
+       
+</head>
+
+<body class="bg-gray-50">
+    <div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div class=" max-w-5xl bg-white rounded-xl shadow-lg flex overflow-hidden">
+
+            <!-- Colonne gauche -->
+            <div class="flex items-center border-blue-500 flex-col w-[40%] h-full ">
+                <div class="w-full">
+                    <img src="./image/transaction.png" alt="Coworking Space" class="w-full h-[300px] object-cover">
+                </div>
+
+                <!-- Text Section -->
+                <div class="venu text-white p-10"
+                    style="background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #38bdf8 100%);">
+                    <h2 class="text-sm t1 font-semibold text-gray-100 mb-2">Bienvenue !</h2>
+                    <h1 class="text-2xl t2 md:text-3xl text-white font-bold mb-4 leading-snug">
+                        Créez votre compte et rejoignez Budget Personnal
+                    </h1>
+                    <p class="text-sm p1 text-white">
+                        Inscrivez-vous pour accéder à toutes les fonctionnalités : gestion, suivi et historique de vos opérations en toute sécurité.<br>
+                        
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <!-- Colonne droite -->
+            <div class="w-[60%] p-8 flex bg-gray-50 flex-col">
+                <div class="">
+                    <div class="w-full max-w-lg mx-auto">
+                        <h2 class="text-3xl font-bold text-center mb-6 text-gray-700">Inscrivez-vous sur Budget Personnal</h2>
+                        <p class="messge text-blue-500 mb-8 text-center text-xl font-bold"></p>
+                       
+                        <form id="form" >
+                            <div class="flex flex-col">
+                                <div class="">
+                                    <label class="block text-gray-600 font-bold mb-1">Nom</label>
+                                    <input type="text" class="nom   w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-teal-700 bg-gray-100" />
+                                     <div class="errorNom  text-xs text-pink-500 font-bold mt-1"></div>
+                                </div>
+                                <div class="">
+                                    <label class="block text-gray-600 font-bold mb-1">Prénom</label>
+                                    <input type="text" class="prenom  w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-teal-700 bg-gray-100" />
+                                    <div class="errorPrenom  text-xs text-pink-500 font-bold mt-1"> </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-600 font-bold mb-1">Adresse e-mail</label>
+                                <input type="email" class="email  w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-teal-700 bg-gray-100" />
+                                 <div class="errorEmail  text-xs text-pink-500 font-bold mt-1"> </div>
+                            </div>
+                            <div class="mt-5">
+                                <label class="block text-gray-600 font-bold mb-1">Mot de passe</label>
+                                <input type="password" class="motPass  w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-teal-700 bg-gray-100" />
+                                <div class="errorMotPass  text-xs text-pink-500 font-bold mt-1"></div>
+                            </div>
+                            <div class="flex items-center justify-between mt-10">
+                                <button type="submit" class="bg-blue-500 text-white px-2 py-2 rounded-lg font-bold shadow hover:bg-blue-500 transition-all">Créer votre compte</button>
+                                <span class="text-gray-500">Vous avez déjà un compte ? <a href="index.html" class="connect  text-teal-700 font-bold">Se connecter</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="inscriptionConnection.js"></script>
+
+</body>
+
+</html>

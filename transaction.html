@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Personnal</title>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./fonts/css/all.css">
+    <style>
+        /* Style pour le defilement */
+        @keyframes defilement {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .pDefile {
+            display: inline-block;
+            white-space: nowrap;
+            animation: defilement 8s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+        <div class=" max-w-10xl bg-white rounded-xl shadow-lg flex overflow-hidden p-0">
+
+            <!-- Colonne gauche -->
+            <div class="flex items-center flex-col w-[40%] h-full ">
+                <div class="w-full">
+                    <img src="./image/transaction.png" alt="Coworking Space" class="w-full h-[300px] object-cover">
+                </div>
+
+                <!-- Text Section -->
+                <div class="venu text-white h-[300px]  p-10"
+                    style=" background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #38bdf8 100%);">
+                    <h2 class="text-sm t1 font-semibold text-gray-100 mb-2">Bienvenue sur Budget Personnal</h2>
+                    <h1 class="text-2xl t2 md:text-3xl text-white font-bold mb-4 leading-snug">
+                        Découvrez notre espace Budget et facilitez vos transactions financières en toute sécurité !
+                    </h1>
+                    <p class="text-sm p1 text-white">
+                        Ici, vous pouvez gérer, suivre et historiser vos opérations d'argent simplement et rapidement.
+                        <br>
+
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <!-- Colonne droite -->
+            <div class="w-[60%] p-8 flex bg-gray-50 flex-col">
+                <!-- Defilement -->
+                <div class="flex items-center justify-between overflow-x-auto mb-10 mt-0 ">
+                    <div class="defile max-h-100 w-[400px]  flex items-center bg-white px-4">
+                        <p class="pDefile text-gray-700 font-bold text-xl">Bonjour Mamadou fela balde</p>
+                    </div>
+                    <div
+                        class="icone w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 border-2 border-blue-500 shadow hover:bg-blue-200 transition">
+                        <i class="fas fa-user text-blue-600 text-3xl"></i>
+                    </div>
+                </div>
+                <!-- Statistiques -->
+                <div class="flex space-x-4 justify-between mb-3">
+                    <div
+                        class="stats  shadow-lg bg-white rounded-lg p-4 hover:bg-blue-100 transition-all duration-300 ">
+                        <div class="stat text-center ">
+                            <div class="stat-title text-gray-500 text-xl font-bold">Transactions</div>
+                            <div class="totalTransactions stat-value  text-blue-500 text-2xl "></div>
+                            <div class="stat-desc text-gray-400">Total des transactions</div>
+                        </div>
+                    </div>
+
+                    <div class="stats shadow-lg bg-white rounded-lg p-4 hover:bg-blue-100 transition-all duration-300 ">
+                        <div class="stat text-center ">
+                            <div class="stat-title text-gray-500 text-xl font-bold">Dépenses</div>
+                            <div class="totalDepense stat-value  text-pink-500 text-2xl "></div>
+                            <div class="stat-desc text-gray-400">Total des dépenses</div>
+                        </div>
+                    </div>
+
+                    <div class="stats shadow-lg bg-white rounded-lg p-4 hover:bg-blue-100 transition-all duration-300 ">
+                        <div class="stat text-center ">
+                            <div class="stat-title text-gray-500 text-xl font-bold">Revenus</div>
+                            <div class="totalRevenus stat-value text-blue-500 text-2xl "></div>
+                            <div class="stat-desc text-gray-400">Total des revenus</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Liste des transactions -->
+                <div class="flex items-center justify-between mt-10">
+                    <h2 class="text-xl font-bold">Liste des transactions</h2>
+                    <button class="bg-blue-500 text-white px-3 py-2 rounded-lg shadow font-semibold"
+                        onclick="openModal(); return false;">Ajouter des transactions</button>
+                </div>
+                <!-- Onglets -->
+                <div class="flex    mt-10  flex items-center justify-between space-x-1">
+                    <button class="tab-btn btn1 font-bold text-gray-500 border-b-2 border-blue-400 font-semibold pb-1"
+                        onclick="showTab(1)">Transactions</button>
+                    <button class="tab-btn btn2 font-bold text-gray-500 hover:text-gray-500 font-semibold pb-1"
+                        onclick="showTab(2)">Revenus</button>
+                    <button class="tab-btn btn3 font-bold text-gray-500 hover:text-gray-500 font-semibold pb-1"
+                        onclick="showTab(3)">Dépenses</button>
+
+                    <form action="" class="ml-auto">
+                        <input type="text" id="searchInput" oninput="rechercherTransactions()"
+                            placeholder="Rechercher..." class="border border-gray-300 rounded-lg px-3 mb-2 py-2">
+                    </form>
+                </div>
+                <!-- Tableaux transaction -->
+                <div id="table-all" class="bg-white rounded-lg shadow p-4 w-full">
+                    <div class="w-full  scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100"
+                        style="overflow-y:scroll;  max-height:200px;">
+                        <table class="table min-w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr class="text-gray-400 text-sm border-b ">
+                                    <th class="py-2 px-3 font-bold whitespace-nowrap">Type</th>
+                                    <th class="py-2 px-3 font-bold whitespace-nowrap">Description</th>
+                                    <th class="py-2 px-3 font-bold whitespace-nowrap">Montant</th>
+                                    <th class="py-2 px-3 font-bold whitespace-nowrap">Date</th>
+                                    <th class="py-2 px-3 font-bold whitespace-nowrap">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tnody1 text-gray-700">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Tableau Revenue -->
+                <div id="table-revenue" class="bg-white rounded-lg shadow p-4 w-full hidden">
+                    <div class=" w-full scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-gray-200"
+                        style="overflow-y:scroll; max-height:200px;">
+                        <table class="table min-w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr class="text-gray-400 text-sm border-b">
+                                    <th class="py-2 px-3 whitespace-nowrap">Type</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Description</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Montant</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Date</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tnody2 text-gray-700">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Tableau depens -->
+                <div id="table-expenses" class="bg-white rounded-lg shadow p-4 w-full hidden">
+                    <div class=" w-full scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-gray-200"
+                        style="overflow-y:scroll; max-height:200px;">
+                        <table class="table min-w-full text-left text-sm md:text-base">
+                            <thead>
+                                <tr class="text-gray-400 text-sm border-b">
+                                    <th class="py-2 px-3 whitespace-nowrap">Type</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Description</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Montant</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Date</th>
+                                    <th class="py-2 px-3 whitespace-nowrap">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="tnody3 text-gray-700">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Modal d'Ajouter des transactions -->
+    <div id="modal-transaction"
+        class="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg relative">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+            <h2 class="text-3xl font-bold mb-5 text-center  p-2 w-fit mx-auto">
+                Ajouter des transactions</h2>
+            <p class="messge text-blue-500 mb-8 text-center text-xl font-bold"></p>
+            <form id="form">
+                <div class="mb-4">
+                    <label class="block text-gray-600 font-bold mb-1">Type de transaction</label>
+
+                    <select name="types" id="types"
+                        class="types w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-blue-400">
+                        <option>Choisissez...</option>
+                        <option value="revenue">Revenue</option>
+                        <option value="depense">Depense</option>
+                    </select>
+                    <p class="errorTypes text-xs text-pink-500 font-bold mt-1"></p>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600 font-bold mb-1">Description</label>
+                    <input type="text"
+                        class="description  w-full rounded-lg border f border-gray-300 p-2 focus:outline-none focus:border-blue-400" />
+                    <p class="errorDescription  text-xs text-pink-500 font-bold mt-1"> </p>
+                </div>
+                <div class="mb-8">
+                    <label class="block text-gray-600 font-bold mb-1">Montant</label>
+                    <input type="number"
+                        class="montant w-full rounded-lg border border-gray-300 p-2 focus:outline-none focus:border-blue-400" />
+                    <p class="errorMontant text-xs text-pink-500 font-bold mt-1"></p>
+                </div>
+                <div class="flex justify-center gap-8">
+                    <button type="submit" id="boutonAjout"
+                        class="bg-blue-500 text-white px-12 py-2 rounded-full font-bold text-lg shadow hover:bg-blue-600 transition-all">Ajouter</button>
+                    <button type="button" onclick="closeModal()"
+                        class="bg-gray-200 text-pink-500 px-12 py-2 rounded-full font-bold text-lg shadow hover:bg-gray-300 transition-all">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
